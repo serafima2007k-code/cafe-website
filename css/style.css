@@ -1,0 +1,425 @@
+/* общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #3E2723;
+    background-color: #FFF9F5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section__title {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #5D4037;
+}
+
+/* кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.btn--primary {
+    background-color: #8D6E63;
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #6D4C41;
+    transform: translateY(-2px);
+}
+
+.btn--primary:active {
+    background-color: #4E342E;
+    transform: translateY(0);
+}
+
+/* шапка */
+.header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+/* логотип */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo__img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo__text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #5D4037;
+}
+
+/* навигация */
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #5D4037;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: #6D4C41;
+}
+
+.nav__link:active {
+    color: #efc5ba;
+}
+/* счётчик избранного */
+.favorites-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #F5E6D3;
+    padding: 5px 12px;
+    border-radius: 30px;
+}
+
+.favorites-counter__icon {
+    font-size: 18px;
+}
+
+.favorites-counter__number {
+    font-weight: 700;
+    color: #5D4037;
+}
+
+/* Убеждаемся, что заголовок "Избранное" виден */
+.favorites .section__title {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: #5D4037;
+    transition: 0.3s;
+}
+
+/* главная */
+.hero {
+    background: linear-gradient(135deg, #F5E6D3 0%, #FFF9F5 100%);
+}
+
+.hero__container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero__content {
+    flex: 1;
+}
+
+.hero__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #3E2723;
+}
+
+.hero__subtitle {
+    font-size: 20px;
+    color: #6D4C41;
+    margin-bottom: 30px;
+}
+
+.hero__image {
+    flex: 1;
+}
+
+.hero__img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+}
+
+/* меню и изранное */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 24px;
+    border-radius: 30px;
+    border: 2px solid #D7CCC8;
+    background: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #5D4037;
+}
+
+.filter-btn:hover {
+    background-color: #8D6E63;
+    border-color: #8D6E63;
+    color: white;
+}
+
+.filter-btn:active {
+    background-color: #4E342E;
+    border-color: #4E342E;
+    color: white;
+}
+
+.filter-btn.active {
+    background-color: #8D6E63;
+    border-color: #8D6E63;
+    color: white;
+}
+
+/* Сетка карточек для меню и избранного*/
+.menu__grid,
+#favorites-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* карточка блюда */
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 380px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* изображение */
+.card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* содержимое карточки */
+.card__content {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #3E2723;
+    line-height: 1.3;
+    min-height: 46px;
+}
+
+.card__description {
+    font-size: 14px;
+    color: #8D6E63;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.card__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8D6E63;
+    margin-bottom: 12px;
+}
+
+/* кнопка "В избранное" */
+.card__favorite-btn {
+    background: white;
+    border: 2px solid #D7CCC8;
+    border-radius: 40px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: auto;
+    color: #5D4037;
+}
+
+.card__favorite-btn:hover {
+    background-color: #8D6E63;
+    border-color: #8D6E63;
+    color: white;
+}
+
+.card__favorite-btn:active {
+    background-color: #4E342E;
+    border-color: #4E342E;
+    color: white;
+}
+
+.card__favorite-btn.active {
+    background-color: #8D6E63;
+    border-color: #8D6E63;
+    color: white;
+}
+
+/* сообщение "Ничего не найдено" */
+.empty-message {
+    text-align: center;
+    padding: 50px;
+    color: #8D6E63;
+    font-size: 18px;
+    background: #F5E6D3;
+    border-radius: 16px;
+    grid-column: 1 / -1;
+}
+
+/* "избранное" */
+.favorites {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.favorites .section__title {
+    margin-bottom: 30px;
+}
+
+/* контакты */
+.contact__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact__info h3,
+.contact__form h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #5D4037;
+}
+
+.contact__info p {
+    margin-bottom: 12px;
+    color: #6D4C41;
+}
+
+/* Форма */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #5D4037;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #D7CCC8;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #8D6E63;
+}
+
+.form-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-message.success {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.form-message.error {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+/* подвал */
+.footer {
+    background-color: #5D4037;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
