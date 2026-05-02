@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Кафе с домашней выпечкой</title>
+    <meta name="description" content="Кафу — свежая выпечка, ароматный кофе и уютная атмосфера. Забронируйте столик онлайн.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ШАПКА САЙТА (HEADER) -->
+    <header class="header">
+        <div class="container header__container">
+            <div class="logo">
+                <img src="images/logo.webp" alt="Логотип кафе" class="logo__img">
+                <span class="logo__text">Кафе</span>
+            </div>
+            
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active">Главная</a></li>
+                    <li class="nav__item"><a href="#menu" class="nav__link">Меню</a></li>
+                    <li class="nav__item"><a href="#favorites" class="nav__link">Избранное</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="favorites-counter">
+                <span class="favorites-counter__icon">❤️</span>
+                <span id="favorites-count" class="favorites-counter__number">0</span>
+            </div>
+            
+            <button class="burger-menu" id="burgerMenu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="section hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Добро пожаловать в кафе&nbsp;</h1>
+                    <p class="hero__subtitle">Свежая выпечка, ароматный кофе и уютная атмосфера</p>
+                    <a href="#menu" class="btn btn--primary hero__btn">Посмотреть меню</a>
+                </div>
+                <div class="hero__image">
+                    <img src="images/photo1.jpg" alt="кафе" class="hero__img">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="section menu">
+            <div class="container">
+                <h2 class="section__title">Наше меню</h2>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Всё</button>
+                    <button class="filter-btn" data-category="coffee">Кофе</button>
+                    <button class="filter-btn" data-category="dessert">Десерты</button>
+                    <button class="filter-btn" data-category="snack">Закуски</button>
+                </div>
+                
+                <div id="menu-container" class="menu__grid"></div>
+            </div>
+        </section>
+
+        <section id="favorites" class="section favorites">
+            <div class="container">
+                <h2 class="section__title">Избранное</h2>
+                <div id="favorites-container" class="menu__grid"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section__title">Контакты и бронирование</h2>
+                <div class="contact__wrapper">
+                    <div class="contact__info">
+                        <h3>Как нас найти</h3>
+                        <p>📍 г. Ставрополь, ул. Ленина, 25</p>
+                        <p>📞 +7 (8652) 12-34-56</p>
+                        <p>⏰ Ежедневно: 09:00 — 21:00</p>
+                        <p>📧 hello@cafe.ru</p>
+                    </div>
+                    
+                    <form id="booking-form" class="contact__form">
+                        <h3>Забронировать столик</h3>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" name="name" placeholder="Иван Иванов">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="ivan@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Дата бронирования</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        <button type="submit" class="btn btn--primary">Забронировать</button>
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Кафе. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/favoritesManager.js"></script>
+    <script src="js/filterService.js"></script>
+    <script src="js/uiManager.js"></script>
+    <script src="js/formValidator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
