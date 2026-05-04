@@ -20,6 +20,7 @@
 - JavaScript (классы, модули, localStorage)
 
 ## Структура проекта
+```
 cafe-website/
 │
 ├── index.html
@@ -50,7 +51,7 @@ cafe-website/
 │ └── salad.jpg # фото блюда
 │
 └── README.md
-
+```
 text
 
 ## Как пользоваться сайтом
