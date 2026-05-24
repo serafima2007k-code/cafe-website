@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Кафе с домашней выпечкой</title>
-    <meta name="description" content="Кафу — свежая выпечка, ароматный кофе и уютная атмосфера. Забронируйте столик онлайн.">
+    <meta name="description" content="Кафе — свежая выпечка, ароматный кофе и уютная атмосфера. Забронируйте столик онлайн.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
         <section id="home" class="section hero">
             <div class="container hero__container">
                 <div class="hero__content">
-                    <h1 class="hero__title">Добро пожаловать в кафе&nbsp;</h1>
+                    <h1 class="hero__title">Добро пожаловать в кафе</h1>
                     <p class="hero__subtitle">Свежая выпечка, ароматный кофе и уютная атмосфера</p>
                     <a href="#menu" class="btn btn--primary hero__btn">Посмотреть меню</a>
                 </div>
@@ -115,6 +115,42 @@
             <p>&copy; 2026 Кафе. Все права защищены.</p>
         </div>
     </footer>
+
+    <!-- ===== АДМИН-ПАНЕЛЬ (ИМИТАЦИЯ ДЛЯ УЧЕБНЫХ ЦЕЛЕЙ) ===== -->
+    
+    <!-- Кнопка входа для администратора -->
+    <button class="admin-login-btn" id="adminLoginBtn">🔐 Вход для админа</button>
+    
+    <!-- Затемнение фона -->
+    <div class="admin-overlay" id="adminOverlay"></div>
+    
+    <!-- Админ-панель -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-panel__header">
+            <h3>⚙️ Админ-панель (учебная имитация)</h3>
+            <button class="admin-panel__close" id="adminPanelClose">&times;</button>
+        </div>
+        <div class="admin-panel__content">
+            <div class="admin-panel__section">
+                <h4>📋 Просмотр заявок на бронирование</h4>
+                <button class="admin-panel__btn" id="adminShowBookings">Показать заявки</button>
+                <div id="adminBookingsList" class="admin-panel__list">
+                    <div class="admin-panel__empty">Нажмите "Показать заявки"</div>
+                </div>
+            </div>
+            <div class="admin-panel__section">
+                <h4>⭐ Статистика избранного</h4>
+                <button class="admin-panel__btn" id="adminShowFavoritesStats">Показать статистику</button>
+                <div id="adminFavoritesStats" class="admin-panel__list">
+                    <div class="admin-panel__empty">Нажмите "Показать статистику"</div>
+                </div>
+            </div>
+            <div class="admin-panel__section">
+                <h4>ℹ️ Информация</h4>
+                <p style="font-size: 12px; color: #8D6E63;">Данная панель является учебной имитацией. Все изменения работают только локально и не влияют на сервер.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="js/data.js"></script>
     <script src="js/favoritesManager.js"></script>
