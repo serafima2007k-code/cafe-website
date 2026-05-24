@@ -115,10 +115,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    //  АДМИН-ПАНЕЛЬ (ИМИТАЦИЯ)
     
-    // ===== АДМИН-ПАНЕЛЬ (ИМИТАЦИЯ ДЛЯ УЧЕБНЫХ ЦЕЛЕЙ) =====
-    
-    // Элементы админ-панели
+    // Элементы
     const adminLoginBtn = document.getElementById('adminLoginBtn');
     const adminPanel = document.getElementById('adminPanel');
     const adminOverlay = document.getElementById('adminOverlay');
@@ -128,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const adminShowFavoritesStats = document.getElementById('adminShowFavoritesStats');
     const adminFavoritesStats = document.getElementById('adminFavoritesStats');
     
-    // Функция открытия админ-панели
+    // Функция открытия панели (с паролем)
     function openAdminPanel() {
         const password = prompt('Введите пароль администратора:');
         if (password === 'admin') {
@@ -139,13 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Функция закрытия админ-панели
+    // Функция закрытия панели
     function closeAdminPanel() {
         adminPanel.classList.remove('active');
         adminOverlay.classList.remove('active');
     }
     
-    // Обработчики кнопок админ-панели
+    // Назначаем обработчики
     if (adminLoginBtn) {
         adminLoginBtn.addEventListener('click', openAdminPanel);
     }
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         adminOverlay.addEventListener('click', closeAdminPanel);
     }
     
-    // Функция сохранения заявки в localStorage
+    // Функция сохранения заявки
     function saveBookingToLocalStorage(name, email, date) {
         const bookings = JSON.parse(localStorage.getItem('cafeBookings') || '[]');
         bookings.push({
@@ -171,25 +170,23 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('cafeBookings', JSON.stringify(bookings));
     }
     
-    // Показать заявки на бронирование
+    // Показать заявки
     if (adminShowBookings) {
         adminShowBookings.addEventListener('click', function() {
             const bookings = JSON.parse(localStorage.getItem('cafeBookings') || '[]');
-            
             if (bookings.length === 0) {
                 adminBookingsList.innerHTML = '<div class="admin-panel__empty">📭 Нет заявок на бронирование</div>';
                 return;
             }
-            
             let html = '';
             for (let i = 0; i < bookings.length; i++) {
-                const booking = bookings[i];
+                const b = bookings[i];
                 html += `
                     <div class="admin-panel__list-item">
-                        <p><strong>👤 ${booking.name}</strong></p>
-                        <p>📧 ${booking.email}</p>
-                        <p>📅 ${booking.date}</p>
-                        <p style="font-size: 11px; color: #aaa;">🕐 ${booking.timestamp}</p>
+                        <p><strong>👤 ${b.name}</strong></p>
+                        <p>📧 ${b.email}</p>
+                        <p>📅 ${b.date}</p>
+                        <p style="font-size: 11px; color: #aaa;">🕐 ${b.timestamp}</p>
                     </div>
                 `;
             }
@@ -203,55 +200,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const favorites = favoritesManager.items;
             const totalFavorites = favorites.length;
             
-            // Подсчитываем, какие блюда чаще всего добавляют в избранное
-            const favoriteCounts = {};
-            for (let i = 0; i < favorites.length; i++) {
-                const id = favorites[i];
-                if (favoriteCounts[id]) {
-                    favoriteCounts[id]++;
-                } else {
-                    favoriteCounts[id] = 1;
-                }
-            }
-            
-            // Получаем названия блюд
-            const popularItems = [];
-            for (const id in favoriteCounts) {
-                for (let j = 0; j < menuItems.length; j++) {
-                    if (menuItems[j].id == id) {
-                        popularItems.push({
-                            name: menuItems[j].name,
-                            count: favoriteCounts[id]
-                        });
-                        break;
-                    }
-                }
-            }
-            
             if (totalFavorites === 0) {
                 adminFavoritesStats.innerHTML = '<div class="admin-panel__empty">⭐ Нет добавленных в избранное блюд</div>';
                 return;
             }
             
-            let html = `
-                <div class="admin-panel__list-item">
-                    <p><strong>📊 Всего в избранном:</strong> ${totalFavorites} позиций</p>
-                </div>
-            `;
+            // Считаем популярные блюда
+            const counts = {};
+            for (let i = 0; i < favorites.length; i++) {
+                const id = favorites[i];
+                counts[id] = (counts[id] || 0) + 1;
+            }
             
-            if (popularItems.length > 0) {
+            // Находим названия
+            const popular = [];
+            for (const id in counts) {
+                for (let j = 0; j < menuItems.length; j++) {
+                    if (menuItems[j].id == id) {
+                        popular.push({ name: menuItems[j].name, count: counts[id] });
+                        break;
+                    }
+                }
+            }
+            
+            let html = `<div class="admin-panel__list-item"><p><strong>📊 Всего в избранном:</strong> ${totalFavorites} позиций</p></div>`;
+            if (popular.length > 0) {
                 html += `<div class="admin-panel__list-item"><p><strong>🍽️ Популярные блюда:</strong></p>`;
-                const topItems = popularItems.slice(0, 5);
-                for (let i = 0; i < topItems.length; i++) {
-                    html += `<p style="margin-left: 15px;">• ${topItems[i].name} (добавлено ${topItems[i].count} раз)</p>`;
+                for (let i = 0; i < Math.min(popular.length, 5); i++) {
+                    html += `<p style="margin-left: 15px;">• ${popular[i].name} (добавлено ${popular[i].count} раз)</p>`;
                 }
                 html += `</div>`;
             }
-            
             adminFavoritesStats.innerHTML = html;
         });
     }
-    
     // ===== ЗАПУСКАЕМ ОТОБРАЖЕНИЕ =====
     updateAll();
 });
