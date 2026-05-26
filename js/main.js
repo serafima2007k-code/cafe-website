@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentFilter = 'all';
     
-    
-    // ===== ФУНКЦИИ ОБНОВЛЕНИЯ ИНТЕРФЕЙСА =====
-    
     // Функция обновления меню
     function updateMenu() {
         const filteredItems = filterService.filterByCategory(menuItems, currentFilter);
@@ -33,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    // ===== КНОПКИ ФИЛЬТРАЦИИ =====
+    // Кнопки фильтрации
     const filterButtons = document.querySelectorAll('.filter-btn');
     for (let i = 0; i < filterButtons.length; i++) {
         const button = filterButtons[i];
@@ -51,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    // ===== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ИЗ ИЗБРАННОГО =====
+    // Добавление/удаление из избранного
     document.addEventListener('click', function(event) {
         const favButton = event.target.closest('.card__favorite-btn');
         if (!favButton) return;
@@ -68,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     
-    // ===== ФОРМА БРОНИРОВАНИЯ =====
+    // Форма бронирования
     const bookingForm = document.getElementById('booking-form');
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(event) {
@@ -93,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    // ===== ПЛАВНАЯ ПРОКРУТКА С ОТСТУПОМ =====
+    // Плавная прокрутка
     const links = document.querySelectorAll('.nav__link');
     const header = document.querySelector('.header');
     
@@ -115,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    //  АДМИН-ПАНЕЛЬ (ИМИТАЦИЯ)
+    //  Админ-панель
     
     // Элементы
     const adminLoginBtn = document.getElementById('adminLoginBtn');
@@ -234,6 +231,5 @@ document.addEventListener('DOMContentLoaded', function() {
             adminFavoritesStats.innerHTML = html;
         });
     }
-    // ===== ЗАПУСКАЕМ ОТОБРАЖЕНИЕ =====
     updateAll();
 });
