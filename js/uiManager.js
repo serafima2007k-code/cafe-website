@@ -28,9 +28,7 @@ class UIManager {
     createCard(item, isFavorite) {
         const card = document.createElement('div');
         card.className = 'card';
-        card.setAttribute('data-id', item.id);
-        
-        console.log('Путь к картинке:', item.image); 
+        card.setAttribute('data-id', item.id); 
         
         // Создаём HTML карточки
         card.innerHTML = `
